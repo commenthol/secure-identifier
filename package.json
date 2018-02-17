@@ -12,9 +12,20 @@
     "unicode",
     "username"
   ],
+  "homepage": "https://github.com/commenthol/secure-identifier#readme",
+  "bugs": {
+    "url": "https://github.com/commenthol/secure-identifier/issues"
+  },
   "license": "MIT",
   "author": "commenthol <commenthol@gmail.com>",
   "main": "src",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commenthol/secure-identifier.git"
+  },
   "scripts": {
     "all": "npm run lint && npm run cover",
     "cover": "nyc -r lcov -r text npm test",
