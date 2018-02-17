@@ -18,10 +18,18 @@ This secure identifier shall be stored alongside the username/ loginId to ensure
 
 ## Further reading...
 
-For the complexity of a valid username I recommend [Let’s talk about usernames][] which also inspired me for this project.
+For the complexity of a valid usernames I recommend [Let’s talk about usernames][] which also inspired me for this project.
 To read about where to use such identifier check [The Tripartite Identity Pattern][].
 
 ## Usage
+
+For use in your project:
+
+```
+npm i -S secure-identifier
+```
+
+Then:
 
 ```js
 const {secureIdentifier} = require('secure-identifier')
@@ -69,7 +77,7 @@ It is also possible to use your own list of reserved words. See `./test/Identifi
 
 ## License
 
-[MIT](./LICENSE.md) licensed
+[MIT licensed](./LICENSE.md)
 
 ## References
 
@@ -81,9 +89,9 @@ It is also possible to use your own list of reserved words. See `./test/Identifi
 Reserved-names-lists are from:
 
 - https://ldpreload.com/blog/names-to-reserve
-- https://zimbatm.github.io/hostnames-and-usernames-to-reserve/
+-  https://zimbatm.github.io/hostnames-and-usernames-to-reserve/ (CC0)
 - http://blog.postbit.com/reserved-username-list.html
-- http://www.bannedwordlist.com/lists/swearWords.txt
+- http://www.bannedwordlist.com/lists/swearWords.txt (Free)
 
 [Unicode Security Mechanisms TR39]: https://www.unicode.org/reports/tr39/
 [Let’s talk about usernames]: https://www.b-list.org/weblog/2018/feb/11/usernames/
