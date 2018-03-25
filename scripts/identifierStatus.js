@@ -3,8 +3,6 @@ const {promisify} = require('asyncc-promise')
 const {identifier, identifierTemplate} = require('./utils')
 const config = require('./config')
 
-/**
-*/
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/IdentifierStatus.txt`, 'utf8')
     .then(data => identifier(data))

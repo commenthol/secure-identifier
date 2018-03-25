@@ -4,8 +4,6 @@ const config = require('./config')
 const regenerate = require('regenerate')
 const {toNumber, surrogateES6} = require('./utils')
 
-/**
-*/
 function template (map, regex) {
   const strMap = JSON.stringify(map, null, 2).replace(/[\\]{2}([ux])/g, '\\$1').replace(/"/g, "'")
   const tmpl = `exports.map = ${strMap}
@@ -14,8 +12,6 @@ exports.regex = /${regex}/
   return tmpl
 }
 
-/**
-*/
 function intentional (data) {
   const _map = {}
   const _regex = regenerate()
@@ -32,6 +28,7 @@ function intentional (data) {
       _map[to] = from // put reverse as we want to normalize to less intentional
       _regex.add(toCode)
     })
+
   const map = Object.keys(_map).sort().reduce((o, curr) => {
     o[curr] = _map[curr]
     return o
@@ -40,8 +37,6 @@ function intentional (data) {
   return {map, regex}
 }
 
-/**
-*/
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/intentional.txt`, 'utf8')
     .then(data => intentional(data))

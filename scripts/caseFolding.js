@@ -5,8 +5,6 @@ const {promisify} = require('asyncc-promise')
 const config = require('./config')
 const {toNumber, surrogateES6} = require('./utils')
 
-/**
-*/
 function template (map) {
   const tmpl = Object.keys(map).map(key => {
     const strMap = JSON.stringify(map[key], null, 2).replace(/[\\]{2}([ux])/g, '\\$1').replace(/"/g, "'")
@@ -15,8 +13,6 @@ function template (map) {
   return tmpl
 }
 
-/**
-*/
 function caseFolding (data) {
   const map = {}
 
@@ -42,8 +38,6 @@ function caseFolding (data) {
   return {map}
 }
 
-/**
-*/
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/CaseFolding.txt`, 'utf8')
     .then(data => caseFolding(data))

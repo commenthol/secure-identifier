@@ -3,8 +3,6 @@ const {promisify} = require('asyncc-promise')
 const config = require('./config')
 const {toNumber, surrogateES6} = require('./utils')
 
-/**
-*/
 function template (map, keys) {
   const strMap = JSON.stringify(map, null, 2).replace(/[\\]{2}([ux])/g, '\\$1').replace(/"/g, "'")
   const tmpl = `exports.map = ${strMap}
@@ -12,8 +10,6 @@ function template (map, keys) {
   return tmpl + '\n'
 }
 
-/**
-*/
 function confusables (data) {
   const map = {}
   const keys = []
@@ -32,8 +28,6 @@ function confusables (data) {
   return {map, keys}
 }
 
-/**
-*/
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/confusables.txt`, 'utf8')
     .then(data => confusables(data))

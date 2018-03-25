@@ -2,8 +2,8 @@ const IdentifierBase = require('./IdentifierBase')
 const _data = require('../data/reserved')
 
 /**
-* @api private
-*/
+ * @api private
+ */
 class Cache {
   constructor () {
     this._data = {}
@@ -54,13 +54,13 @@ class Cache {
 
 class Reserved {
   /**
-  * creates a list of reserved words
-  * an entry may consist of a string or regex
-  * using an `*` asterix at beginning or end creates `startsWith`, `contains`,
-  * `endsWith` rules. E.g. `*test*` matches all names which contains `test`
-  * @constructor
-  * @param {Array<String|RegExp>} data - list of reserved names
-  */
+   * creates a list of reserved words
+   * an entry may consist of a string or regex
+   * using an `*` asterix at beginning or end creates `startsWith`, `contains`,
+   * `endsWith` rules. E.g. `*test*` matches all names which contains `test`
+   * @constructor
+   * @param {Array<String|RegExp>} data - list of reserved names
+   */
   constructor (data) {
     data = data || _data
     this._cache = new Cache()
@@ -69,11 +69,11 @@ class Reserved {
     })
   }
   /**
-  * lookup `string` if its part of the reserved names list
-  * @param {String} string - string to look for
-  * @param {Boolean} [isSecure] - if `true` then string is already "sanitized"
-  * @return {Boolean} if `true` then `string` is a reserved name
-  */
+   * lookup `string` if its part of the reserved names list
+   * @param {String} string - string to look for
+   * @param {Boolean} [isSecure] - if `true` then string is already "sanitized"
+   * @return {Boolean} if `true` then `string` is a reserved name
+   */
   lookup (string, isSecure) {
     const sec = isSecure
       ? string
