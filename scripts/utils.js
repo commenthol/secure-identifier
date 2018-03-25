@@ -11,14 +11,19 @@ module.exports = {
 }
 
 /**
-* convert to unicode escaped char
-*/
+ * convert code to unicode escaped char
+ * @param {Number} code
+ */
 function u (code) {
   let str = '0000' + code.toString(16).toUpperCase()
   str = '\\u' + str.substr(str.length - 4, 4)
   return str
 }
 
+/**
+ * convert code to hex escaped char
+ * @param {Number} code
+ */
 function x (code) {
   let str = '00' + code.toString(16).toUpperCase()
   str = '\\x' + str.substr(str.length - 2, 2)
@@ -26,7 +31,9 @@ function x (code) {
 }
 
 /**
-*/
+ * convert char code to number
+ * @param {String|Any} code
+ */
 function toNumber (code) {
   if (typeof code === 'string') {
     code = Number('0x' + code)
@@ -34,6 +41,10 @@ function toNumber (code) {
   return code
 }
 
+/**
+ * convert to camel case
+ * @param {String} str
+ */
 function toCamelCase (str) {
   let s =
     str &&
@@ -43,8 +54,10 @@ function toCamelCase (str) {
       .join('')
   return s.slice(0, 1).toLowerCase() + s.slice(1)
 }
+
 /**
-*/
+ * surrogate using ES6 notation
+ */
 function surrogateES6 (code) {
   code = toNumber(code)
   if (code < 0x10000) {
@@ -54,8 +67,9 @@ function surrogateES6 (code) {
 }
 
 /**
-* @see Section 3.7 of The Unicode Standard 3.0 http://unicode.org/versions/Unicode3.0.0/ch03.pdf
-*/
+ * create surrogate pair <ES6
+ * @see Section 3.7 of The Unicode Standard 3.0 http://unicode.org/versions/Unicode3.0.0/ch03.pdf
+ */
 function surrogatePair (code) {
   code = toNumber(code)
   if (code < 0x10000) {
@@ -67,7 +81,9 @@ function surrogatePair (code) {
 }
 
 /**
-*/
+ * template for identifier regexes
+ * @param {Object} regexes
+ */
 function identifierTemplate (regexes) {
   const keys = Object.keys(regexes)
   const tmpl = keys.map(key =>
@@ -76,6 +92,11 @@ function identifierTemplate (regexes) {
   return tmpl.join('\n') + '\n'
 }
 
+/**
+ * print range of codes - helper
+ * @private
+ * @param {Array} range
+ */
 function print (range) { // eslint-disable-line no-unused-vars
   const line = (code) => console.log(`${u(code)}\t${String.fromCodePoint(code)}`)
   if (range.length === 1) {
@@ -88,7 +109,9 @@ function print (range) { // eslint-disable-line no-unused-vars
 }
 
 /**
-*/
+ * prepare identifier pattern
+ * @param {String} data
+ */
 function identifier (data) {
   const _regexes = {}
 
