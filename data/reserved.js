@@ -1,13 +1,13 @@
 /**
-* List of reserved account- / user-names
-*
-* @credits to https://ldpreload.com/blog/names-to-reserve
-* @credits to https://zimbatm.github.io/hostnames-and-usernames-to-reserve/
-* @credits to http://blog.postbit.com/reserved-username-list.html
-* @credits to http://www.bannedwordlist.com/lists/swearWords.txt
-*
-* A heading/tailing `*` constructs a regex such to obtain rules like `startswith`, `contains`, `endsWith`
-*/
+ * List of reserved account- / user-names
+ *
+ * @credits to https://ldpreload.com/blog/names-to-reserve
+ * @credits to https://zimbatm.github.io/hostnames-and-usernames-to-reserve/
+ * @credits to http://blog.postbit.com/reserved-username-list.html
+ * @credits to http://www.bannedwordlist.com/lists/swearWords.txt
+ *
+ * A heading/tailing `*` constructs a regex such to obtain rules like `startswith`, `contains`, `endsWith`
+ */
 const RESERVED = [
   // from https://ldpreload.com/blog/names-to-reserve
   'localhost',
@@ -573,6 +573,16 @@ const RESERVED = [
   'wank',
   'whore',
   'wtf',
+
+  // additional
+  'blocked',
+  'computer',
+  'deleted',
+  'error',
+  'explore',
+  'feature',
+  'internet',
+  'marketplace',
 
   // regexes
   /^[0-9.]/, // disallows numbers and . at the very beginning
