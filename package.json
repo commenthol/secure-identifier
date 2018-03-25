@@ -27,10 +27,12 @@
     "url": "git+https://github.com/commenthol/secure-identifier.git"
   },
   "scripts": {
-    "all": "npm run lint && npm run cover",
-    "cover": "nyc -r lcov -r text npm test",
+    "clean": "rimraf lib coverage .nyc_output",
+    "clean:all": "npm run clean && rimraf *.tgz lib node_modules",
+    "coverage": "nyc -r html -r text npm test",
     "data": "node scripts/all.js",
     "lint": "eslint '**/*.js'",
+    "prepare": "npm run clean && npm run lint && npm test",
     "test": "mocha"
   },
   "dependencies": {},
