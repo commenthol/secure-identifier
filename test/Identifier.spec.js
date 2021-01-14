@@ -1,7 +1,7 @@
 const assert = require('assert')
 const log = require('debug')('test:Identifier')
-const {Identifier, Reserved} = require('..')
-const {decode, deepEqual} = require('./support')
+const { Identifier, Reserved } = require('..')
+const { decode, deepEqual } = require('./support')
 
 describe('Identifier', function () {
   // a new list of reserved words
@@ -14,32 +14,32 @@ describe('Identifier', function () {
   ])
 
   const fixtures = [
-    [ 'equals', undefined ],
-    [ '-equals', '-equals' ],
-    [ 'equals-', 'equals-' ],
-    [ '-equals-', '-equals-' ],
-    [ 'starts', undefined ],
-    [ '-starts', '-starts' ],
-    [ 'starts-', undefined ],
-    [ '-starts-', '-starts-' ],
-    [ 'contains', undefined ],
-    [ '-contains', undefined ],
-    [ 'contains-', undefined ],
-    [ '-contains-', undefined ],
-    [ 'ends', undefined ],
-    [ '-ends', undefined ],
-    [ 'ends-', 'ends-' ],
-    [ '-ends-', '-ends-' ],
-    [ 'regex', undefined ],
-    [ '-regex', '-regex' ],
-    [ 'regex-', undefined ],
-    [ '-regex-', '-regex-' ]
+    ['equals', undefined],
+    ['-equals', '-equals'],
+    ['equals-', 'equals-'],
+    ['-equals-', '-equals-'],
+    ['starts', undefined],
+    ['-starts', '-starts'],
+    ['starts-', undefined],
+    ['-starts-', '-starts-'],
+    ['contains', undefined],
+    ['-contains', undefined],
+    ['contains-', undefined],
+    ['-contains-', undefined],
+    ['ends', undefined],
+    ['-ends', undefined],
+    ['ends-', 'ends-'],
+    ['-ends-', '-ends-'],
+    ['regex', undefined],
+    ['-regex', '-regex'],
+    ['regex-', undefined],
+    ['-regex-', '-regex-']
   ]
 
   fixtures.forEach((test, i) => {
     const [string, exp] = test
     it(`${string} → ${exp}`, function () {
-      const res = new Identifier(string, {reserved}).secure().valid()
+      const res = new Identifier(string, { reserved }).secure().valid()
       log(string, res, decode(res))
       deepEqual(res, exp)
     })

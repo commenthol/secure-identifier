@@ -1,7 +1,7 @@
 const fs = require('fs')
-const {promisify} = require('asyncc-promise')
+const { promisify } = require('asyncc-promise')
 const config = require('./config')
-const {toNumber, surrogateES6} = require('./utils')
+const { toNumber, surrogateES6 } = require('./utils')
 
 function template (map, keys) {
   const strMap = JSON.stringify(map, null, 2).replace(/[\\]{2}([ux])/g, '\\$1').replace(/"/g, "'")
@@ -16,7 +16,7 @@ function confusables (data) {
 
   data.split(/[\r\n]/)
     .filter((line) => !/^\s*#|^\s*$/.test(line))
-    .map((line) => {
+    .forEach((line) => {
       let [fromCode, toCodes] = line.split(/;/).map(s => s.trim())
       toCodes = toCodes.split(' ')
       fromCode = toNumber(fromCode)
@@ -25,13 +25,13 @@ function confusables (data) {
       const to = toCodes.map((toCode) => surrogateES6(toCode)).join('')
       map[from] = to
     })
-  return {map, keys}
+  return { map, keys }
 }
 
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/confusables.txt`, 'utf8')
     .then(data => confusables(data))
-    .then(({map, keys}) => template(map, keys))
+    .then(({ map, keys }) => template(map, keys))
     .then(string => promisify(fs.writeFile)(`${config.datadir}/confusables.js`, string, 'utf8'))
 }
 

@@ -46,7 +46,7 @@ function toNumber (code) {
  * @param {String} str
  */
 function toCamelCase (str) {
-  let s =
+  const s =
     str &&
     str
       .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
@@ -117,7 +117,7 @@ function identifier (data) {
 
   data.split(/[\r\n]/)
     .filter((line) => !/^\s*#|^\s*$/.test(line))
-    .map((line) => {
+    .forEach((line) => {
       let [range, status] = line.split(/[;#]/).map(s => s.trim())
       range = range.split('..').map((c) => Number('0x' + c))
       status = status.split(/\s/)

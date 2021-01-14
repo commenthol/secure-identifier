@@ -1,6 +1,6 @@
 const confusables = require('./confusables')
-const {caseFolding} = require('./caseFolding')
-const {identifierStatus, isStatus} = require('./identifierStatus')
+const { caseFolding } = require('./caseFolding')
+const { identifierStatus, isStatus } = require('./identifierStatus')
 
 class IdentifierBase {
   /**
@@ -12,13 +12,14 @@ class IdentifierBase {
    */
   constructor (string, opts) {
     string = string || ''
-    opts = Object.assign({minLength: 2, maxLength: 60}, opts)
+    opts = Object.assign({ minLength: 2, maxLength: 60 }, opts)
     Object.assign(this, {
       string,
       _original: string,
       opts
     })
   }
+
   /**
    * trim whitespace
    */
@@ -26,6 +27,7 @@ class IdentifierBase {
     this.string = this.string.trim()
     return this
   }
+
   /**
    * trim single whitespace chars and replace by '-' to pass `confusables()`
    */
@@ -37,12 +39,14 @@ class IdentifierBase {
     })
     return this
   }
+
   /**
    * @return {Number} length of original string
    */
   length () {
     return Array.from(this._original).length
   }
+
   /**
    * remove confusables homoglyphs
    */
@@ -50,6 +54,7 @@ class IdentifierBase {
     this.string = confusables(this.string)
     return this
   }
+
   /**
    * perform case-folding
    */
@@ -57,6 +62,7 @@ class IdentifierBase {
     this.string = caseFolding(this.string, type)
     return this
   }
+
   /**
    * normalize UTF string
    * @param {String} type - see String.normalize() for allowed values
@@ -65,6 +71,7 @@ class IdentifierBase {
     this.string = this.string.normalize(type)
     return this
   }
+
   /**
   * perform all ops to convert to a secure string
   */
@@ -77,42 +84,49 @@ class IdentifierBase {
     this._isSecure = true // internal qualifier to stop reprocessing string again
     return this
   }
+
   /**
    * @return {Array} all offending chars
    */
   status () {
     return identifierStatus(this.string)
   }
+
   /**
    * @return {String|undefined} secured identifier if valid
    */
   valid () {
     if (this.isValid()) return this.string
   }
+
   /**
    * @return {Boolean} `true` if all symbols are allowed
    */
   isStatus () {
     return isStatus(this.string)
   }
+
   /**
    * @return {Boolean} `true` if all symbols are valid
    */
   isValid () {
     return this.isMinLength() && this.isMaxLength() && isStatus(this.string)
   }
+
   /**
    * @return {Boolean} `true` if string matches minLength
    */
   isMinLength () {
     return this.length() >= this.opts.minLength
   }
+
   /**
    * @return {Boolean} `true` if string matches maxLength
    */
   isMaxLength () {
     return this.length() <= this.opts.maxLength
   }
+
   /**
    * @return {String} get current string
    */

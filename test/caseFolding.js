@@ -1,6 +1,6 @@
-const {Identifier, CASEFOLD_SIMPLE} = require('..')
+const { Identifier, CASEFOLD_SIMPLE } = require('..')
 const log = require('debug')('test:caseFolding')
-const {decode, deepEqual} = require('./support')
+const { decode, deepEqual } = require('./support')
 const fix = require('./fixtures')
 
 describe('caseFolding', function () {

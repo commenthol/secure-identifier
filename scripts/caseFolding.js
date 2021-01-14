@@ -1,9 +1,9 @@
 /* eslint no-console: 0 */
 
 const fs = require('fs')
-const {promisify} = require('asyncc-promise')
+const { promisify } = require('asyncc-promise')
 const config = require('./config')
-const {toNumber, surrogateES6} = require('./utils')
+const { toNumber, surrogateES6 } = require('./utils')
 
 function template (map) {
   const tmpl = Object.keys(map).map(key => {
@@ -25,7 +25,7 @@ function caseFolding (data) {
 
   data.split(/[\r\n]/)
     .filter((line) => !/^\s*#|^\s*$/.test(line))
-    .map((line) => {
+    .forEach((line) => {
       let [fromCode, type, toCodes] = line.split(/;/).map(s => s.trim())
       toCodes = toCodes.split(' ')
       fromCode = toNumber(fromCode)
@@ -35,13 +35,13 @@ function caseFolding (data) {
       if (!map[type]) map[type] = {}
       map[type][from] = to
     })
-  return {map}
+  return { map }
 }
 
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/CaseFolding.txt`, 'utf8')
     .then(data => caseFolding(data))
-    .then(({map, keys}) => template(map, keys))
+    .then(({ map, keys }) => template(map, keys))
     .then(string => promisify(fs.writeFile)(`${config.datadir}/caseFolding.js`, string, 'utf8'))
 }
 

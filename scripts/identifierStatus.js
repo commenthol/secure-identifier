@@ -1,6 +1,6 @@
 const fs = require('fs')
-const {promisify} = require('asyncc-promise')
-const {identifier, identifierTemplate} = require('./utils')
+const { promisify } = require('asyncc-promise')
+const { identifier, identifierTemplate } = require('./utils')
 const config = require('./config')
 
 function main () {

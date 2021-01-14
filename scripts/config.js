@@ -1,3 +1,4 @@
+/* eslint node/no-path-concat: off */
 
 const config = {
   datadir: `${__dirname}/../data`,

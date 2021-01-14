@@ -1,5 +1,5 @@
 const assert = require('assert')
-const {Identifier} = require('..')
+const { Identifier } = require('..')
 const fix = require('./fixtures')
 
 describe('isStatus', function () {
@@ -34,6 +34,6 @@ describe('identifierStatus', function () {
     const string = fix.circles[7][1]
     const res = new Identifier(string).status()
     // console.log('%j', res)
-    assert.deepEqual(res, [ '𝖢', '𝗂', '𝗋', '𝖼', '𝗅', '𝖾' ])
+    assert.deepEqual(res, ['𝖢', '𝗂', '𝗋', '𝖼', '𝗅', '𝖾'])
   })
 })

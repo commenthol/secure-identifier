@@ -1,4 +1,4 @@
-const {map} = require('../data/confusables')
+const { map } = require('../data/confusables')
 
 module.exports = function confusables (string) {
   return (string || '')

@@ -1,4 +1,4 @@
-const {CASEFOLD_SIMPLE, CASEFOLD_FULL} = require('./caseFolding')
+const { CASEFOLD_SIMPLE, CASEFOLD_FULL } = require('./caseFolding')
 const Identifier = require('./Identifier')
 const secureIdentifier = require('./secureIdentifier')
 const Reserved = require('./Reserved')

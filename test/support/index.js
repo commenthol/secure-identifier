@@ -1,6 +1,6 @@
 const assert = require('assert')
-const {ucs2} = require('punycode') // eslint-disable-line node/no-deprecated-api
-const {u} = require('../../scripts/utils')
+const { ucs2 } = require('punycode') // eslint-disable-line node/no-deprecated-api
+const { u } = require('../../scripts/utils')
 
 function decode (str) {
   if (str) {

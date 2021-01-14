@@ -15,12 +15,14 @@ class Identifier extends IdentifierBase {
     opts = opts || {}
     this.reserved = opts.reserved || _reserved
   }
+
   /**
    * @return {Boolean} `true` if name is a reserved name
    */
   isReserved () {
     return this.reserved.lookup(this.string, this._isSecure)
   }
+
   /**
    * @return {Boolean} `true` if name is a valid identifier
    */

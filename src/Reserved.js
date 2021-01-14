@@ -10,6 +10,7 @@ class Cache {
     this._regexes = []
     this._indexOf = []
   }
+
   add (name) {
     if (name instanceof RegExp) {
       this._regexes.push(name)
@@ -40,6 +41,7 @@ class Cache {
       throw new TypeError('not String or RegExp')
     }
   }
+
   lookup (name) {
     if (this._data[name]) return true
     for (const ind of this._indexOf) {
@@ -68,6 +70,7 @@ class Reserved {
       this._cache.add(name)
     })
   }
+
   /**
    * lookup `string` if its part of the reserved names list
    * @param {String} string - string to look for

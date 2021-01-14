@@ -1,8 +1,8 @@
 const fs = require('fs')
-const {promisify} = require('asyncc-promise')
+const { promisify } = require('asyncc-promise')
 const config = require('./config')
 const regenerate = require('regenerate')
-const {toNumber, surrogateES6} = require('./utils')
+const { toNumber, surrogateES6 } = require('./utils')
 
 function template (map, regex) {
   const strMap = JSON.stringify(map, null, 2).replace(/[\\]{2}([ux])/g, '\\$1').replace(/"/g, "'")
@@ -18,7 +18,7 @@ function intentional (data) {
 
   data.split(/[\r\n]/)
     .filter((line) => !/^\s*#|^\s*$/.test(line))
-    .map((line) => {
+    .forEach((line) => {
       let [fromCode, toCode] = line.split(/[;#]/).map(s => s.trim())
       fromCode = toNumber(fromCode)
       toCode = toNumber(toCode)
@@ -34,13 +34,13 @@ function intentional (data) {
     return o
   }, {})
   const regex = _regex.toString()
-  return {map, regex}
+  return { map, regex }
 }
 
 function main () {
   return promisify(fs.readFile)(`${config.datadir}/intentional.txt`, 'utf8')
     .then(data => intentional(data))
-    .then(({map, regex}) => template(map, regex))
+    .then(({ map, regex }) => template(map, regex))
     .then(string => promisify(fs.writeFile)(`${config.datadir}/intentional.js`, string, 'utf8'))
 }
 

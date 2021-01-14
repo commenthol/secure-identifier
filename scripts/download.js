@@ -1,6 +1,6 @@
 const fs = require('fs')
 const request = require('superagent')
-const {eachLimit} = require('asyncc-promise')
+const { eachLimit } = require('asyncc-promise')
 const config = require('./config')
 
 function download (url, file, datadir) {

@@ -1,6 +1,6 @@
 const log = require('debug')('test:confusables')
-const {Identifier} = require('..')
-const {decode, deepEqual} = require('./support')
+const { Identifier } = require('..')
+const { decode, deepEqual } = require('./support')
 const fix = require('./fixtures')
 
 describe('confusables', function () {
